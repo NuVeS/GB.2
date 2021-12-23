@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// Тип для определения ошибки содержащей текущую дату
 type TimeError struct {
 	curTime time.Time
 }
@@ -15,6 +16,7 @@ func (err *TimeError) Error() string {
 	return err.curTime.String()
 }
 
+// Функция намеренно паникует и восстанавливает себя через recover
 func ex1() {
 	defer func() {
 		if v := recover(); v != nil {
@@ -26,6 +28,7 @@ func ex1() {
 	panic("paniced")
 }
 
+// Функция выводит в консоль приветсвие
 func sayHello() {
 	fmt.Println("Hello")
 }
