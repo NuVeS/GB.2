@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 // Главная функция, для проверки заданий
@@ -17,5 +20,13 @@ func main() {
 
 	// ex2()
 
-	ex3()
+	// ex3()
+
+	// i := 0
+	// makeWorkers(&i)
+	// fmt.Println(i)
+
+	sysCallChan := make(chan os.Signal, 1)
+	signal.Notify(sysCallChan, syscall.SIGTERM)
+	systemCalled(sysCallChan)
 }
